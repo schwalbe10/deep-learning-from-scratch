@@ -153,7 +153,7 @@ def load_mnist_from_sklearn(normalize=True, flatten=True, one_hot_label=False):
     with open(save_file, 'rb') as f:
         dataset = pickle.load(f)  # datasetを読み込む
 
-    x_train, x_test, t_train, t_test = train_test_split(dataset['data'], dataset['target'], test_size=test_num, random_state=0)
+    x_train, x_test, t_train, t_test = train_test_split(dataset['data'], dataset['target'].astype('int64'), test_size=test_num, random_state=0)
     
     if normalize:
         x_train = x_train.astype(np.float32) / 255.0
