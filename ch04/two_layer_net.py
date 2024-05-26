@@ -1,7 +1,7 @@
 import sys, os
 sys.path.append(os.pardir)
 import numpy as np
-from common.functions import softmax, cross_entropy_error
+from common.functions import *
 from common.gradient import numerical_gradient
 
 
@@ -30,7 +30,7 @@ class TwoLayerNet:
 
         return cross_entropy_error(y, t)
     
-    def acccuracy(self, y, t):
+    def acccuracy(self, x, t):
         y = self.predict(x)
         y = np.argmax(y, axis=1)
         t = np.argmax(t, axis=1)
