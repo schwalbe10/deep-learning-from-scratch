@@ -22,7 +22,7 @@ class TwoLayerNet:
 
         self.lastLayer = SoftmaxWithLoss()
     
-    def predict(self, x, t):
+    def predict(self, x):
         for layer in self.layers.values():
             x = layer.forward(x)
         
@@ -60,7 +60,7 @@ class TwoLayerNet:
         layers = list(self.layers.values())
         layers.reverse()
         for layer in layers:
-            dout = layer.backword(dout)
+            dout = layer.backward(dout)
         
         grads = {}
         grads['W1'], grads['b1'] = self.layers['Affine1'].dW, self.layers['Affine1'].db
